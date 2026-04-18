@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express")
 const mongoose = require("mongoose")
 const cors = require("cors")
@@ -27,7 +28,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage })
 
 // ===== DB CONNECT =====
-mongoose.connect("mongodb://Shreya_47:Stobit17JINN@ac-m4u71xj-shard-00-00.wghlkjz.mongodb.net:27017,ac-m4u71xj-shard-00-01.wghlkjz.mongodb.net:27017,ac-m4u71xj-shard-00-02.wghlkjz.mongodb.net:27017/?ssl=true&replicaSet=atlas-i6y5cw-shard-0&authSource=admin&appName=Cluster0")
+mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log(err))
 
